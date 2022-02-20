@@ -1,0 +1,122 @@
+.countries {
+  display: grid;
+  place-content: center;
+  gap: 2.5rem;
+  width: 100%;
+}
+
+.container {
+  display: grid;
+  gap: 2.5rem;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding-bottom: 1rem;
+}
+.container h1 {
+  text-align: center;
+}
+
+.imgContainer {
+  width: 100%;
+  border-radius: 6px;
+}
+.imgContainer img {
+  border: 1.5px solid rgba(0, 0, 0, 0.048) !important;
+}
+.imgContainer div > span {
+  object-fit: cover;
+  background-color: var(--accent);
+  border: 2px solid var(--line);
+  transition: all 0.4s;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.caption {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.captionContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.details h2 {
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.5;
+  color: var(--text);
+  transition: all 0.4s;
+}
+.details h3 {
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text);
+  margin-block-end: 10px;
+  transition: all 0.4s;
+}
+.details p {
+  font-size: 12px;
+  line-height: 1.2;
+  color: var(--text);
+  margin-block-end: 5px;
+  transition: all 0.4s;
+}
+
+.details span{
+  opacity: 0.8;
+}
+
+.details .btnContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+}
+.btnContainer a {
+  width: auto;
+  padding: 8px 15px;
+  text-align: center;
+  color: var(--text);
+  background-color: var(--accent);
+  transition: all 0.4s;
+}
+.btnContainer a:hover {
+  background-color: transparent;
+}
+
+@media screen and (min-width: 860px) {
+  .backButton {
+    width: 100px;
+  }
+  .container {
+    display: grid;
+    gap: 3rem;
+    align-items: center;
+    justify-content: space-between;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .captionContainer {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .border {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-block-start: 2.5rem;
+  }
+  .caption h3 {
+    font-size: 17px;
+  }
+  .caption p {
+    font-size: 15px;
+  }
+}
