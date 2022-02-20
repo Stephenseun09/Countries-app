@@ -11,7 +11,7 @@ export default function Home(props) {
 
   const searchedCountry = props.countries.filter((country) => {
     if (country.name && search) {
-      return country.name.common.toLowerCase().includes(search.toLowerCase());
+      return country.name.toLowerCase().includes(search.toLowerCase());
     }
   });
   const filteredCountry = props.countries.filter((country) => {
