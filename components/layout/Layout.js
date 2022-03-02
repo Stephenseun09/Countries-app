@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import useLocalStorage from "use-local-storage";
+import { AnimatePresence, motion } from "framer-motion";
 
 import MainNavigation from "./MainNavigation";
 
@@ -22,8 +23,10 @@ function Layout(props) {
 
   return (
     <div data-theme={theme}>
-      <MainNavigation theme={theme} onClick={toggleThemeHandler} />
-      <main className={classes.main}>{props.children}</main>
+      <AnimatePresence>
+        <MainNavigation theme={theme} onClick={toggleThemeHandler} />
+        <main className={classes.main}>{props.children}</main>
+      </AnimatePresence>
     </div>
   );
 }

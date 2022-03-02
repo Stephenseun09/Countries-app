@@ -11,12 +11,6 @@ export default function Home(props) {
 
   const searchedCountry = props.countries.filter((country) => {
     if (country.name && search) {
-      if (!country.length) {
-        return <h2 className="search-result-text">No Countries Found</h2>;
-      }
-
-      ////////////////////////////
-      ///////////////////////
       return country.name.toLowerCase().includes(search.toLowerCase());
     }
   });
@@ -50,6 +44,9 @@ export default function Home(props) {
         </>
       )}
       {!search && !selected && <CountryList countries={props.countries} />}
+      {search && !props.countries.length && (
+        <h2 className="search-result-text">No Countries Found</h2>
+      )}
     </>
   );
 }
