@@ -6,13 +6,20 @@ import CountryList from "../components/countries/CountryList";
 import Inputs from "../components/Inputs/Inputs";
 
 export default function Home(props) {
+  
   const search = useSelector((state) => state.search.search);
   const selected = useSelector((state) => state.search.selected);
 
   const searchedCountry = props.countries.filter((country) => {
     if (country.name && search) {
+      if (!country.length){
+        return <h2 className="search-result-text">No Countries Found</h2>
+      }
+
+      ////////////////////////////
+      ///////////////////////
       return country.name.toLowerCase().includes(search.toLowerCase());
-    }
+    } 
   });
   const filteredCountry = props.countries.filter((country) => {
     if (country.region && selected) {
@@ -29,16 +36,17 @@ export default function Home(props) {
           content="A list of all the countries in the world. Search for a country by name or by region. Get info of countries."
         />
       </Head>
+
       <Inputs />
       {search && (
         <>
-          <h2 className="search-result-text">Search Results for {search}</h2>
+          <h2 className="search-result-text">Search Results for "{search}"</h2>
           <CountryList countries={searchedCountry} />
         </>
       )}
       {selected && !search && (
         <>
-          <h2 className="search-result-text">Showing results for {selected}</h2>
+          <h2 className="search-result-text">Showing results for "{selected}"</h2>
           <CountryList countries={filteredCountry} />
         </>
       )}
