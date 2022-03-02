@@ -6,20 +6,19 @@ import CountryList from "../components/countries/CountryList";
 import Inputs from "../components/Inputs/Inputs";
 
 export default function Home(props) {
-  
   const search = useSelector((state) => state.search.search);
   const selected = useSelector((state) => state.search.selected);
 
   const searchedCountry = props.countries.filter((country) => {
     if (country.name && search) {
-      if (!country.length){
-        return <h2 className="search-result-text">No Countries Found</h2>
+      if (!country.length) {
+        return <h2 className="search-result-text">No Countries Found</h2>;
       }
 
       ////////////////////////////
       ///////////////////////
       return country.name.toLowerCase().includes(search.toLowerCase());
-    } 
+    }
   });
   const filteredCountry = props.countries.filter((country) => {
     if (country.region && selected) {
@@ -40,13 +39,13 @@ export default function Home(props) {
       <Inputs />
       {search && (
         <>
-          <h2 className="search-result-text">Search Results for "{search}"</h2>
+          <h2 className="search-result-text">Search Results for {search}</h2>
           <CountryList countries={searchedCountry} />
         </>
       )}
       {selected && !search && (
         <>
-          <h2 className="search-result-text">Showing results for "{selected}"</h2>
+          <h2 className="search-result-text">Showing results for {selected}</h2>
           <CountryList countries={filteredCountry} />
         </>
       )}
@@ -62,11 +61,15 @@ export async function getStaticProps() {
       `https://restcountries.com/v2/all?fields=name,capital,alpha3Code,population,region,flags,borders`
     );
     let countries = await response.data;
-    countries.sort(function(a, b){
+    countries.sort(function (a, b) {
       let x = a.name.toLowerCase();
       let y = b.name.toLowerCase();
-      if (x < y) {return -1;}
-      if (x > y) {return 1;}
+      if (x < y) {
+        return -1;
+      }
+      if (x > y) {
+        return 1;
+      }
       return 0;
     });
 
